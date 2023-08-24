@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Spam-Ham Classification</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src= "https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <style type="text/css">
+      .form{
+        display:none;
+      }
+      a{
+        text-decoration: none;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    {% load static %}
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">Spam-Ham Classification</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav align-items-center ml-auto">
+            {% if user.is_authenticated %}
+            <a class="nav-link nav-item" href="{% url 'redirect_profile' %}">Profile</a>
+            <a class="nav-link nav-item" href="{% url 'classify_spam_ham' %}">Classify</a>
+            <a class="nav-link nav-item" href="{% url 'logout' %}">Log out</a>
+            <a class="nav-link nav-item" href="#">Welcome {{user.username}}</a>
+            {% else %}
+            <a class="nav-item nav-link" href="{% url 'login' %}" aria-label="Login">
+              <span class="fa fa-user" aria-hidden="true"> Login</span>
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </nav>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Spam-Ham Classification</h1>
+      </div>
+      {% if user.is_authenticated %}
+      <a href="{% url 'classify_spam_ham' %}">
+        <button type="button" class="btn btn-large btn-primary">
+        Classify Spam/Ham
+        </button>
+      </a>
+      <a href="{% url 'redirect_profile' %}">
+        <button type="button" class="btn btn-large btn-primary">
+        Go to Profile
+        </button>
+      </a>
+
+      {% else %}
+      <a href="{% url 'classify_spam_ham' %}">
+        <button type="button" class="btn btn-large btn-primary">
+        Use default database
+        </button>
+      </a>
+      <a href="{% url 'login' %}">
+        <button type="button" class="btn btn-large btn-primary">
+          Classify with your own data (Login Required)
+        </button>
+      </a>
+
+      <h2>New User?</h2>
+      <a href="{% url 'signup' %}">
+        <button type="button" class="btn btn-large btn-primary">
+          Signup here.
+        </button>
+      </a>
+      {% endif %}
+    </div>
+  </body>
+</html>
