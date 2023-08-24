@@ -111,6 +111,6 @@ Password: user_password
 
 ## Developed By:
 
-[**Aditya Manchanda**](https://github.com/Aditya-1500/)<br>
+[**Ayush Mittal**](https://github.com/Ayushnit455/)<br>
 under the guidance of<br>
 **Dr. Amritpal Singh**, Assistant Professor, CSE Department, NIT Jalandhar
